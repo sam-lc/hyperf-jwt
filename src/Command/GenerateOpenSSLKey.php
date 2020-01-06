@@ -45,7 +45,7 @@ class GenerateOpenSSLKey extends Command
      */
     protected function generatePrivateKey($key): string
     {
-        openssl_pkey_export($key, $privateKey, $this->generatePassphrase());
+        openssl_pkey_export($key, $privateKey);
         return $privateKey;
     }
 
