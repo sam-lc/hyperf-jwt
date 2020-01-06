@@ -96,7 +96,7 @@ class Jwt implements JwtInterface
      *
      * @return Jwt
      */
-    public function setValidationData(ValidationData $validationData): self
+    public function setValidationData(ValidationData $validationData): JwtInterface
     {
         $this->validationData = $validationData;
         return $this;
