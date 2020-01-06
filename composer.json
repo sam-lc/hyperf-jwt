@@ -1,0 +1,49 @@
+{
+    "name": "samlc/hyperf-jwt",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "hyperf"
+    ],
+    "description": "jwt component",
+    "autoload": {
+        "psr-4": {
+            "Samlc\\HyperfJwt\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HyperfTest\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-openssl": "*",
+        "ext-redis": "*",
+        "ext-swoole": ">=4.4",
+        "hyperf/di": "1.1.*",
+        "hyperf/framework": "1.1.*",
+        "hyperf/redis": "^1.1",
+        "lcobucci/jwt": "^3.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "phpstan/phpstan": "^0.10.5",
+        "hyperf/testing": "1.1.*",
+        "swoft/swoole-ide-helper": "dev-master"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "co-phpunit -c phpunit.xml --colors=always",
+        "analyse": "phpstan analyse --memory-limit 300M -l 0 ./src",
+        "cs-fix": "php-cs-fixer fix $1"
+    },
+    "extra": {
+        "hyperf": {
+            "config": "Samlc\\HyperfJwt\\ConfigProvider"
+        }
+    }
+}
