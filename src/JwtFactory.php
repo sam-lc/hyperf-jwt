@@ -15,6 +15,7 @@
 
 namespace Samlc\HyperfJwt;
 
+use Hyperf\Contract\ConfigInterface;
 use Samlc\HyperfJwt\Exception\JwtException;
 use Samlc\HyperfJwt\SingerFactory\EcdsaFactory;
 use Samlc\HyperfJwt\SingerFactory\HmacFactory;
@@ -28,10 +29,20 @@ class JwtFactory
         'hmac'  => HmacFactory::class,
         'ecdsa' => EcdsaFactory::class,
     ];
+    protected $config;
+
+    /**
+     * JwtFactory constructor.
+     * @param ConfigInterface $config
+     */
+    public function __construct(ConfigInterface $config)
+    {
+        $this->config = $config;
+    }
 
     public function __invoke()
     {
-        $config = include __DIR__ . DIRECTORY_SEPARATOR . 'publish' . DIRECTORY_SEPARATOR . 'jwt.php';
+        $config = $this->config->get('jwt');
         if (key_exists(strtolower($config['sign_type']), $this->factory)) {
             /**
              * @var SignerFactory $singerFactory
