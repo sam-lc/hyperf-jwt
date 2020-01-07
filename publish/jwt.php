@@ -24,6 +24,6 @@ return [
         'decode'  => env('JWR_PUBLIC_KEY', 'file://./key/public.key'),
     ],
     'aud'            => env('JWT_AUD', 'http://localhost'), //受众
-    'iat'            => env('JWT_IAT', 'your@email.com'),   //签发人
+    'iss'            => env('JWT_IAT', 'your@email.com'),   //签发人
     'sso'            => env('JWT_SSO', false),              //单点登录，借助redis实现
 ];
