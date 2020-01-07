@@ -19,7 +19,7 @@ use Hyperf\Command\Command;
 
 class GenerateOpenSSLKey extends Command
 {
-    protected $name = 'jwt:openSSLKey';
+    protected $name = 'gen:opensslKey';
 
     /**
      * Fun handle Description
@@ -30,6 +30,9 @@ class GenerateOpenSSLKey extends Command
     {
         $key     = $this->newKey();
         $keyPath = BASE_PATH . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'key';
+        if (!is_dir($keyPath)) {
+            mkdir($keyPath);
+        }
         file_put_contents($keyPath . DIRECTORY_SEPARATOR . 'private.key', $this->generatePrivateKey($key));
         file_put_contents($keyPath . DIRECTORY_SEPARATOR . 'public.key', $this->generatePublicKey($key));
     }
